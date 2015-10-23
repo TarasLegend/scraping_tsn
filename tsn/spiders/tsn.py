@@ -15,8 +15,8 @@ class BbcSpider(CrawlSpider):
 
 		story = TsnItem()
 		story['url'] = response.url
-		story['headline'] = response.xpath("//title/text()").extract()
-		data_from_json = json.loads(response.body)
+		story['headline'] = [s.encode('utf-8') for s in response.xpath("//title/text()").extract()]
+		#data_from_json = json.loads(response.body)
 		#story['intro'] = response.css('p.introduction::text').extract()
 
 		return story	
