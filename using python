@@ -1,1 +1,4 @@
-to decode strings in human readable strings use python3
+to decode strings in human readable strings use python3 or  from __future__ import unicode_literals
+
+
+

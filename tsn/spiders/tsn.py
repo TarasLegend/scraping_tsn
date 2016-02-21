@@ -4,7 +4,7 @@ from scrapy.contrib.linkextractors import LinkExtractor
 from items import TsnItem
 
 
-class BbcSpider(CrawlSpider):
+class TsnSpider(CrawlSpider):
 	name = "tsn"
 	allowed_domains = ['tsn.ua']
 	start_urls = [
@@ -17,7 +17,8 @@ class BbcSpider(CrawlSpider):
 
 		story = TsnItem()
 		story['url'] = response.url
-		story['headline'] = [s.encode('utf-8') for s in response.xpath("//title/text()").extract()]
+		# story['headline'] = [s.encode('utf-8') for s in response.xpath("//title/text()").extract()]
+		story['headline'] = response.xpath("//title/text()").extract()
 		story['date'] = response.xpath(r".//*[@id='main_grid']/div[2]/div[2]/div[2]/span/span[1]/text()").extract()
 		#data_from_json = json.loads(response.body)
 		#story['intro'] = response.css('p.introduction::text').extract()

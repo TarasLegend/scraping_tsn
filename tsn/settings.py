@@ -16,6 +16,17 @@ NEWSPIDER_MODULE = 'tsn.spiders'
 
 DOWNLOAD_DELAY = 5
 
+# DATABASE = {
+#     'drivername': 'postgres',
+#     'host': 'localhost',
+#     'port': '5432',
+#     'username': 'taras',
+#     'password': 'postgres',
+#     'database': 'scrape'
+# }
+
+ITEM_PIPELINES = ['tsn.pipelines.TsnPipeline']
+
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'tsn (+http://www.yourdomain.com)'

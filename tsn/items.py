@@ -11,3 +11,4 @@ from scrapy.item import Item, Field
 class TsnItem(Item):
 	headline = Field()
 	url = Field()
+	date = Field()

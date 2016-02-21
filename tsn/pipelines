@@ -1,0 +1,27 @@
+from sqlalchemy.orm import sessionmaker
+#from models import Deals, db_connect, create_deals_table
+
+
+class TsnPipeline(object):
+    """Tsn pipeline for storing scraped items in the database"""
+    def __init__(self):
+        self.conn = psycopg.connect(user="taras",
+                                    host="localhost",
+                                    dbname="postgres",
+                                    password="postgres")
+
+
+    def process_item(self, item, spider):
+        """Save deals in the database.
+
+        This method is called for every item pipeline component.
+
+        """
+        cur = self.conn.cursor()
+
+        cur.execute("""
+                    INSERT INTO items(headline, url, date)
+                    VALUES({0}, {1}, {2})""".format(item["headline"], item["url"], item["date"]))
+
+        self.conn.commit()
+        return item
