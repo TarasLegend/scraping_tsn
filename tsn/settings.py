@@ -26,6 +26,8 @@ DOWNLOAD_DELAY = 5
 # }
 
 ITEM_PIPELINES = ['tsn.pipelines.TsnPipeline']
+# ITEM_PIPELINES = ['tsn.pipelines.JsonWithEncodingPipeline']
+
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
